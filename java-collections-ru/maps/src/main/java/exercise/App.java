@@ -7,7 +7,7 @@ import java.util.Map;
 class App {
     public static Map<String, Integer> getWordCount(String sentence) {
         Map<String, Integer> wordCount = new HashMap<>();
-	String[] letters = sentence.split(" "); 
+	String[] letters = sentence.split(" ");
 	for (var symbol : letters) {
             if (wordCount.containsKey(symbol)) {
 	        wordCount.put(symbol, wordCount.get(symbol) + 1);
