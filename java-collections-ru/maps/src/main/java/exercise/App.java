@@ -18,10 +18,13 @@ class App {
         return wordCount;
     }
     public static String toString(Map<String, Integer> wordCount) {
+        if (wordCount.isEmpty()) {
+            return "{}";
+        }
         StringBuilder filtered = new StringBuilder();
         filtered.append("{\n");
         for (var word : wordCount.keySet()) {
-            filtered.append(" ").append(word).append(": ").append(wordCount.get(word)).append("\n");
+            filtered.append("  ").append(word).append(": ").append(wordCount.get(word)).append("\n");
         }
         filtered.append("}");
         return filtered.toString();
