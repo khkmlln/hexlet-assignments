@@ -28,7 +28,7 @@ class App {
         for (var word : wordCount.keySet()) {
             filtered.append("  ").append(word).append(": ").append(wordCount.get(word)).append("\n");
         }
-        StringBuilder.append("}");
+        filtered.append("}");
         return filtered.toString();
     }
 }
