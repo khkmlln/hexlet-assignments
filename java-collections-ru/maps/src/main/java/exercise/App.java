@@ -9,10 +9,12 @@ class App {
         Map<String, Integer> wordCount = new HashMap<>();
         String[] letters = sentence.split(" ");
         for (var symbol : letters) {
-            if (wordCount.containsKey(symbol)) {
-                wordCount.put(symbol, wordCount.get(symbol) + 1);
-            } else {
-                wordCount.put(symbol, 1);
+            if (!symbol.isEmpty()) {
+                if (wordCount.containsKey(symbol)) {
+                    wordCount.put(symbol, wordCount.get(symbol) + 1);
+                } else {
+                    wordCount.put(symbol, 1);
+                }
             }
         }
         return wordCount;
@@ -24,7 +26,7 @@ class App {
         StringBuilder filtered = new StringBuilder();
         filtered.append("{\n");
         for (var word : wordCount.keySet()) {
-            filtered.append("  ").append(word).append(": ").append(wordCount.get(word)).append("\n");
+            filtered.append("  ").append(word).append(": ").append(wordCount.get(word)).append(",\n");
         }
         filtered.append("}");
         return filtered.toString();
