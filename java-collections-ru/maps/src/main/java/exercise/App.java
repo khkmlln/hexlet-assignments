@@ -26,9 +26,8 @@ class App {
         StringBuilder filtered = new StringBuilder();
         filtered.append("{\n");
         for (var word : wordCount.keySet()) {
-            filtered.append("  ").append(word).append(": ").append(wordCount.get(word)).append(",\n");
+            filtered.append("  ").append(word).append(": ").append(wordCount.get(word)).append("\n");
         }
-        filtered.deleteCharAt(filtered.lastIndexOf(","));
         filtered.append("\n}");
         return filtered.toString();
     }
