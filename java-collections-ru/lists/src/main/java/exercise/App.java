@@ -5,23 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 // BEGIN
-public class App {
-public static boolean scrabble(String letters, String word) {
+class App {
+	public static boolean scrabble(String letters, String word) {
 	List<Character> list = new ArrayList<>();
-	String lettersLowerCase = letters.toLowerCase();
-	for (char words: lettersLowerCase.toCharArray()) {
-		list.add(words);
+	for (var i : letters.toLowerCase().toCharArray()) {
+		list.add(i);
 	}
-	for (char words: word.toLowerCase().toCharArray()) {	
-	if (list.contains(words)) {
-			list.remove(Character.valueOf(words));
+	for (var j : word.toLowerCase().toCharArray()) {
+		if (list.contains(j)) {
+			list.remove(Character.valueOf(j));
 		} else {
 			return false;
+		}
+	}
+	return true;
 	}
 }
-return true;
-}
-}
-
-
 //END
