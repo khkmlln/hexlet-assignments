@@ -11,11 +11,11 @@ class App {
                 List<Map<String, String>> finale = new ArrayList<>();
                 for (Map <String, String> book : books) {
                         boolean matched = true;
-			for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+                        for (Entry<String, String> entry : dictionary.entrySet()) {
                                 String key = entry.getKey();
                                 String value = entry.getValue();
                                 String bookKey = book.get(key);
-                                if (!value.Equals(bookKey)) {
+                                if (!value.equals(bookKey)) {
                                         matched = false;
                                         break;
                                 }
