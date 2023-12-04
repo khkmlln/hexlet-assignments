@@ -7,9 +7,9 @@ import java.util.Map.Entry;
 
 // BEGIN
 class App {
-        public static List<Map<String, String>> findWhere(List<Map<String, String>> books, Map<String, String> dictionary) {
+        public static List<Map<String, String>> findWhere(List<Map<String, String>> books, Map<String,String> dictionary) {
                 List<Map<String, String>> finale = new ArrayList<>();
-                for (Map <String, String> book : books) {
+                for (var book : books) {
                         boolean matched = true;
                         for (Entry<String, String> entry : dictionary.entrySet()) {
                                 String key = entry.getKey();
@@ -23,7 +23,7 @@ class App {
                         if (matched) {
                                 finale.add(book);
                         }
-                 }
+                }
                 return finale;
         }
 }
