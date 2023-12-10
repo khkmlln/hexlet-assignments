@@ -5,10 +5,10 @@ import java.util.Arrays;
 
 // BEGIN
 class App {
-    public static List<Integer> getCountOfFreeEmails(List<String> emails) {
-        return countOfEmail = emails.stream();
+    public static long getCountOfFreeEmails(List<String> emails) {
+        return emails.stream();
         .filter(s -> s.endsWith("gmail.com") || s.endsWith("yandex.ru") || s.endsWith("hotmail.com"))
-                .collect(Collectors.counting());
+                .count();
     }
 }
 // END
