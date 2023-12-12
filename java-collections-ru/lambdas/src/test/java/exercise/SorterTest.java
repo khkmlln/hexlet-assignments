@@ -15,7 +15,7 @@ class SorterTest {
             Map.of("name", "Alice Lucas", "birthday", "1986-01-01", "gender", "female"),
             Map.of("name", "Elsa Oscar", "birthday", "1970-03-10", "gender", "female")
         );
-        List<String> actual = Sorter.takeOldestMans(users);
+        List<Map<String, String>> actual = Sorter.takeOldestMans(users);
         List expected = List.of();
         assertThat(actual).isEqualTo(expected);
     }
@@ -31,7 +31,7 @@ class SorterTest {
             Map.of("name", "Alice Lucas", "birthday", "1986-01-01", "gender", "female"),
             Map.of("name", "Elsa Oscar", "birthday", "1970-03-10", "gender", "female")
         );
-        List<String> actual = Sorter.takeOldestMans(users);
+        List<Map<String, String>> actual = Sorter.takeOldestMans(users);
         List expected = List.of("John Smith", "Andrey Petrov", "Vladimir Nikolaev");
         assertThat(actual).isEqualTo(expected);
     }
@@ -39,7 +39,7 @@ class SorterTest {
     @Test
     void testSorterWithEmptyList() {
         List<Map<String, String>> users = List.of();
-        List<String> actual = Sorter.takeOldestMans(users);
+        List<Map<String, String>> actual = Sorter.takeOldestMans(users);
         List expected = List.of();
         assertThat(actual).isEqualTo(expected);
     }
