@@ -1,6 +1,5 @@
 package exercise;
 
-
 // BEGIN
 class App {
     public static String[][] enlargeArrayImage(String[][] array) {
