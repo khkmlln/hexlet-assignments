@@ -17,4 +17,3 @@ class App {
         return changedArray;
     }
 }
-// END
