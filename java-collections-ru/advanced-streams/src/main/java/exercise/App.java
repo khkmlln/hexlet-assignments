@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
+// BEGIN
 class App {
     public static String getForwardedVariables(String config) {
         if (config.isEmpty()) {
@@ -20,15 +21,14 @@ class App {
             varieties.addAll(Arrays.stream(variety.split(","))
                     .filter(variable -> variable.startsWith("X_FORWARDED_"))
                     .map(variable -> variable.replace("X_FORWARDED_", ""))
-                    .sorted()
                     .collect(Collectors.toList()));
         }
         return varieties.stream()
                 .map(variable -> {
                     String value = System.getenv("X_FORWARDED_" + variable);
-                    return variable + (value != null ? "=" + value : "");
+                    return variable + (value != null ? value : "");
                 })
-                .sorted()
                 .collect(Collectors.joining(","));
     }
 }
+//END
