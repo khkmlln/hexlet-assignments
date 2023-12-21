@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 // BEGIN
 class App {
-    public static String getForwadedVariables(String config) {
+    public static String getForwardedVariables(String config) {
         List<String> env = Arrays.stream(config.split("\n"))
                 .filter(line -> line.startsWith("environment=\""))
                 .collect(Collectors.toList());
