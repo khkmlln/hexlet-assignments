@@ -13,23 +13,18 @@ class App {
             return "";
         }
         List<String> env = Arrays.stream(config.split("\n"))
-                .filter(line -> line.startsWith("environment="))
+                .filter(line -> line.trim().startsWith("environment=\""))
+                .map(line -> line.substring(line.indexOf("\"") + 1, line.length() - 1))
                 .collect(Collectors.toList());
-        Set<String> varieties = new HashSet<>();
-        for (String line : env) {
-            String variety = line.substring(line.indexOf("\"") + 1, line.lastIndexOf("\""));
-            varieties.addAll(Arrays.stream(variety.split(","))
-                    .filter(variable -> variable.startsWith("X_FORWARDED_"))
-                    .map(variable -> variable.replace("X_FORWARDED_", ""))
-                    .collect(Collectors.toSet()));
-        }
-        List<String> result = varieties.stream()
-                .sorted()
+        Set<String> forwardedVars = env.stream()
+                .flatMap(line -> Arrays.stream(line.split(",")))
+                .filter(variable -> variable.startsWith("X_FORWARDED_"))
                 .map(variable -> {
-                    String value = System.getenv("X_FORWARDED_" + variable);
-                    return variable + (value != null ? "=" + value : "");
+                    String[] pair = variable.split("=");
+                    return pair[0].substring(13) + "=" + pair[1];
                 })
-                .collect(Collectors.toList());
-        return String.join(",", result);
+                .collect(Collectors.toSet());
+
+        return String.join(",", forwardedVars);
     }
 }
