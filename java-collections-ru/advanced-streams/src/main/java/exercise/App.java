@@ -21,15 +21,15 @@ class App {
             varieties.addAll(Arrays.stream(variety.split(","))
                     .filter(variable -> variable.startsWith("X_FORWARDED_"))
                     .map(variable -> variable.replace("X_FORWARDED_", ""))
-                    .collect(Collectors.toList()));
+                    .collect(Collectors.toSet()));
         }
-        return varieties.stream()
+        List<String> result = varieties.stream()
                 .sorted()
                 .map(variable -> {
                     String value = System.getenv("X_FORWARDED_" + variable);
                     return variable + (value != null ? "=" + value : "");
                 })
-                .collect(Collectors.joining(","));
+                .collect(Collectors.toList());
+        return String.join(",", result);
     }
 }
-//END
