@@ -1,6 +1,5 @@
 package exercise;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,7 +20,7 @@ class App {
                 .filter(variable -> variable.startsWith("X_FORWARDED_"))
                 .map(variable -> {
                     String[] pair = variable.split("=");
-                    return pair[0] + "=" + pair[1];
+                    return pair[0].substring(13) + "=" + pair[1];
                 })
                 .collect(Collectors.toSet());
         return String.join(",", forwardedVars);
