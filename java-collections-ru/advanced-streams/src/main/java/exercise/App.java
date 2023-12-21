@@ -24,7 +24,8 @@ class App {
                     .collect(Collectors.toList()));
         }
         return varieties.stream()
-                .map(variable -> {    String value = System.getenv("X_FORWARDED_" + variable);
+                .map(variable -> {
+                    String value = System.getenv("X_FORWARDED_" + variable);
                     return variable + "=" + (value != null ? value : "");
                 })
                 .collect(Collectors.joining(","));
