@@ -13,7 +13,7 @@ class App {
             return "";
         }
         List<String> env = Arrays.stream(config.split("\n"))
-                .filter(line -> line.startsWith("environment=\""))
+                .filter(line -> line.startsWith("environment="))
                 .collect(Collectors.toList());
         Set<String> varieties = new HashSet<>();
         for (String line : env) {
@@ -27,7 +27,7 @@ class App {
                 .sorted()
                 .map(variable -> {
                     String value = System.getenv("X_FORWARDED_" + variable);
-                    return variable + (value != null ? value : "");
+                    return variable + (value != null ? "=" + value : "");
                 })
                 .collect(Collectors.joining(","));
     }
