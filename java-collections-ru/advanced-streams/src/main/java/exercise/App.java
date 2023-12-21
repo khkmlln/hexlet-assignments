@@ -26,7 +26,7 @@ class App {
         return varieties.stream()
                 .map(variable -> {
                     String value = System.getenv("X_FORWARDED_" + variable);
-                    return variable + "=" + (value != null ? value : "");
+                    return variable + (value != null ? value : "");
                 })
                 .collect(Collectors.joining(","));
     }
