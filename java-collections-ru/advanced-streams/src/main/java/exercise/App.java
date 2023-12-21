@@ -9,6 +9,9 @@ import java.util.Arrays;
 // BEGIN
 class App {
     public static String getForwardedVariables(String config) {
+        if (config.isEmpty()) {
+            return "";
+        }
         List<String> env = Arrays.stream(config.split("\n"))
                 .filter(line -> line.startsWith("environment=\""))
                 .collect(Collectors.toList());
