@@ -20,7 +20,7 @@ class App {
                 .flatMap(Arrays::stream) // т.к резульат split это массив, надо его превратить в стрим,
                 // делаем как в начале Arrays.stream
                 .filter(kv -> kv.startsWith("X_FORWARDED_")) // фильтруем те элемены которые начинаются с "X_FORWARDED_"
-                .map(kv -> kv.replaceAll("X_FORWARDED_", "\"")) // затем удаляем из строки
+                .map(kv -> kv.replaceAll("X_FORWARDED_", "")) // затем удаляем из строки
                 // ненужные нам "X_FORWARDED_ для удаления используем replaceAll("ЧТО УДАЛЯЕМ", "")// пустая строка
                 // так мы типа заменяем строку на ничто тем самым удаляем
     .collect(Collectors.joining(",")); // собираем все в List строку с элементами разделенными через запяту/
