@@ -14,8 +14,8 @@ public class ReversedSequence {
     }
     public CharSequence subSequence(int start, int end) {
         StringBuilder builder = new StringBuilder();
-        for (int i = end - 1; i >= start; i--) {
-            builder.append(sequence.charAt(i));
+        for (int i = start; i < end; i++) {
+            builder.append(sequence.charAt(sequence.length() - 1 - i));
         }
         return builder.toString();
     }
