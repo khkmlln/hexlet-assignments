@@ -6,18 +6,18 @@ import java.util.Map;
 // BEGIN
 class App {
     public static Map<String, Integer> getWordCount(String sentence) {
-        Map<String, Integer> wordCount = new HashMap<>();
-        String[] letters = sentence.split(" ");
-        for (var symbol : letters) {
-            if (!symbol.isEmpty()) {
-                if (wordCount.containsKey(symbol)) {
-                    wordCount.put(symbol, wordCount.get(symbol) + 1);
+        Map<String, Integer> count = new HashMap<>();
+        String[] words = sentence.split(" ");
+        for (var word : words) {
+            if (!word.isEmpty()) {
+                if (count.containsKey(word)) {
+                    count.put(word, count.get(word) + 1);
                 } else {
-                    wordCount.put(symbol, 1);
+                    count.put(word, 1);
                 }
             }
         }
-        return wordCount;
+        return count;
     }
     public static String toString(Map<String, Integer> wordCount) {
         if (wordCount.isEmpty()) {
