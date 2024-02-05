@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 public class App {
     public static void swapKeyValue(KeyValueStorage storage) {
         Map<String, String> finale = storage.toMap();
-        finale.entrySet().stream()
+        Map<String, String> swapped = finale.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
-    storage.toMap().clear();
-        for (Map.Entry<String, String> entry : finale.entrySet()) {
+        storage.toMap().clear();
+        for (Map.Entry<String, String> entry : swapped.entrySet()) {
             storage.set(entry.getKey(), entry.getValue());
         }
     }
